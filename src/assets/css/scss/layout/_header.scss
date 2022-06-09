@@ -1,0 +1,193 @@
+header {
+  position: absolute;
+  z-index: 1;
+  @include hPCenter;
+  width: 100%;
+  .container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 4rem 2rem;
+    padding-right: 1.7rem;
+    gap: 4rem;
+    @include in(toSmall) {
+      padding: 3.5rem 1.5rem;
+    }
+  }
+  nav {
+    display: flex;
+    justify-content: flex-end;
+    flex: 1;
+    button {
+      font-size: 1rem;
+      color: $white;
+      @extend %buttonRest;
+      @extend %fCenter;
+      gap: 0.5rem;
+      letter-spacing: 0.02rem;
+    }
+    .menu {
+      width: 100%;
+      @include fSpacer;
+      > ul {
+        @extend %ulRest;
+        display: flex;
+        gap: 2rem;
+        @include in(toSmall) {
+          width: 100%;
+          align-items: center;
+          flex-direction: column;
+        }
+        > li {
+          @extend %transition;
+          @include in(toSmall) {
+            width: 100%;
+            display: flex;
+            overflow: hidden;
+            max-height: 1.5rem;
+            color: $headingsColor;
+            flex-direction: column;
+            &.open {
+              max-height: 18rem;
+            }
+          }
+          > button {
+            opacity: 0.8;
+            @include in(toSmall) {
+              opacity: 1;
+            }
+          }
+        }
+      }
+      > ul > li.open > button,
+      > ul > li > button:hover,
+      > ul > li > button:focus,
+      > ul > li > button:active {
+        opacity: 1;
+        text-decoration: underline;
+        color: $white;
+        @include in(toSmall) {
+          opacity: 0.85;
+          text-decoration: none;
+          color: $headingsColor;
+        }
+      }
+      button {
+        @include in(toSmall) {
+          font-weight: bold;
+          color: $headingsColor;
+          font-size: 1.125rem;
+          opacity: 1;
+        }
+      }
+      li {
+        width: 100%;
+        img {
+          @extend %transition;
+        }
+        &.open {
+          img {
+            transform: rotate(180deg);
+            opacity: 1;
+          }
+          ul {
+            transform: translateX(-2rem) scaleY(1);
+            @include in(toSmall) {
+              transform: translateX(0);
+            }
+          }
+        }
+        ul {
+          @extend %ulRest;
+          @extend %transition;
+          position: absolute;
+          background-color: $white;
+          margin-top: 1rem;
+          padding: 2rem;
+          width: 10rem;
+          border-radius: 0.3125rem;
+          transform: translateX(-2rem) scaleY(0);
+          transform-origin: top;
+          li {
+            button {
+              color: $mainColor;
+            }
+            &:hover button {
+              color: $mainColor;
+              font-weight: bold;
+              text-decoration: none;
+            }
+            &:not(:last-of-type) {
+              padding-bottom: 0.5rem;
+            }
+            @include in(toSmall) {
+              font-weight: bold;
+              flex-direction: column;
+              button {
+                width: 100%;
+                color: $headingsColor;
+              }
+            }
+          }
+          @include in(toSmall) {
+            opacity: 0.85;
+            background-color: hsl(240, 7%, 94%);
+            position: relative;
+            width: 100%;
+            transform: translateX(0);
+            text-align: center;
+          }
+        }
+      }
+      @include in(toSmall) {
+        flex-direction: column;
+        position: absolute;
+        right: 1.5rem;
+        top: 80%;
+        width: calc(100% - 3rem);
+        padding: 2rem;
+        border-radius: 0.3125rem;
+        background-color: $white;
+        box-shadow: 0 0 0.625rem 0 #4848485c;
+        &.hide {
+          display: none;
+        }
+      }
+    }
+    button.buger-button {
+      display: none;
+      border: none;
+      background-color: transparent;
+      @include in(toSmall) {
+        display: block;
+      }
+    }
+  }
+  .buttons {
+    @include in(toSmall) {
+      flex-direction: column;
+      padding-top: 1.5rem;
+      margin-top: 1.5rem;
+      width: 100%;
+      gap: 1rem;
+      border-top: 0.0625rem solid hsl(240deg 7% 94%);
+      button:last-of-type {
+        color: $white;
+        background-image: linear-gradient(to right, $mainGradient);
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+    button:last-of-type {
+      @extend %primaryButton;
+    }
+  }
+  .logo {
+    img {
+      @include in(toSmall) {
+        width: 80%;
+      }
+    }
+  }
+}

@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Overpass:wght@300;600&family=Ubuntu:wght@400;500;700&display=swap");
+*,
+:after,
+:before {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  margin: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+  color: $mainColor;
+  background: hsl(0, 0%, 98%);
+  line-height: 1.7;
+  font-family: $fontFamily;
+  font-size: 1rem;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.container {
+  margin: {
+    left: auto;
+    right: auto;
+  }
+  padding: {
+    left: 1rem;
+    right: 1rem;
+  }
+  @include madiaContainer;
+}
+%altFont {
+  font-family: $mainFont;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+  @extend %altFont;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $headingsColor;
+}
+img.mobile {
+  @include showIn(toSmall);
+}
+img.desktop {
+  @include hideIn(toSmall);
+}
